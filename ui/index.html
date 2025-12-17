@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FriendlyTicker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init zr Wr fi Br Gr ci Nr Hr capture Ui calculateEventProperties Kr register register_once register_for_session unregister unregister_for_session Zr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Xr Jr createPersonProfile Qr jr ts opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Vr debug O Yr getPageViewId captureTraceFeedback captureTraceMetric Or".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_vx0ixSPAGoL0nMkUuZPKA1yowbsBgHFksj5k1vm5moW', {
+      api_host: 'https://us.i.posthog.com',
+      defaults: '2025-11-30',
+      person_profiles: 'identified_only',
+    })
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar shell (rendered by components.js) -->
+    <aside id="sidebar" aria-label="Sidebar navigation"></aside>
+
+    <!-- Global message area -->
+    <div id="global-message" class="global-message" aria-live="polite"></div>
+
+    <!-- Main content shell -->
+    <main id="content" class="main">
+      <!-- Analyze View -->
+      <section id="analyze-view" class="view" aria-label="Analyze a stock">
+        <!-- Analyze Form -->
+        <section class="card card--analyze">
+          <form id="analyze-form" class="analyze-form" autocomplete="off">
+            <label for="ticker-input" class="analyze-form__label">
+              Stock ticker
+            </label>
+
+            <div class="analyze-form__row">
+              <input
+                id="ticker-input"
+                name="ticker"
+                class="analyze-form__input"
+                type="text"
+                placeholder="e.g. AAPL"
+                maxlength="120"
+                required
+              />
+              <button
+                id="analyze-button"
+                type="submit"
+                class="analyze-form__button"
+              >
+                Analyze
+              </button>
+            </div>
+
+            <p class="analyze-form__hint">
+              We’ll show a Trend Regime, a Trend Health score (0–100), and a quick read on Trend Pressure.
+            </p>
+          </form>
+        </section>
+
+        <!-- Analysis Result Container -->
+        <section
+          id="analyze-result"
+          class="result-container"
+          aria-live="polite"
+        ></section>
+
+        <p class="panel__text panel__text--muted">
+          Descriptive snapshot of recent price behavior — not investment advice.
+        </p>
+      </section>
+
+      <!-- Watchlist View -->
+      <section id="watchlist-view" class="view" aria-label="Saved watchlist" hidden>
+        <section class="panel panel--intro">
+          <h1 class="panel__title">Watchlist monitoring</h1>
+          <p class="panel__text">
+            Watchlist for monitoring <strong>trend health</strong> and <strong>regime shifts</strong>.
+          </p>
+          <p class="panel__text panel__text--muted">
+            Track tickers you care about and quickly spot <strong>Trend Pressure</strong> shifts across your list.
+          </p>
+        </section>
+
+        <section class="card card--watchlist">
+          <header class="card__header">
+            <h2 class="card__title">Saved tickers</h2>
+          </header>
+
+          <div
+            id="watchlist-empty-state"
+            class="watchlist-empty"
+            aria-live="polite"
+          >
+            You haven’t saved any tickers yet.
+            <span class="watchlist-empty__hint">
+              Analyze a stock and tap “Add to watchlist” to see it here.
+            </span>
+          </div>
+
+          <div id="watchlist-list" class="watchlist-list"></div>
+        </section>
+      </section>
+
+      <!-- Alerts View -->
+      <section id="alerts-view" class="view" aria-label="Alerts" hidden></section>
+
+      <!-- Pro View -->
+      <section id="pro-view" class="view" aria-label="Pro features" hidden></section>
+
+      <!-- FAQ View -->
+      <section id="faq-view" class="view" aria-label="Frequently asked questions" hidden></section>
+
+      <!-- Contact View -->
+      <section id="contact-view" class="view" aria-label="Contact" hidden>
+        <div class="contact-card">
+          <h1 class="contact-title">Contact</h1>
+          <p class="contact-subtitle">Questions, feedback, or feature requests?</p>
+
+          <p class="contact-text">
+            We’d love to hear what you want next — bugs, feature ideas, or anything confusing.
+          </p>
+
+          <div class="contact-actions">
+            <button id="copyEmailBtn" class="btn btn-primary" type="button">
+              Email FriendlyTicker
+            </button>
+
+            <a
+              id="emailLink"
+              class="contact-email"
+              href="mailto:friendlyticker@gmail.com"
+            >
+              friendlyticker@gmail.com
+            </a>
+
+            <span id="copyToast" class="contact-toast" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">
+        FriendlyTicker — Built for swing traders (3–30 day holds). Not investment advice.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

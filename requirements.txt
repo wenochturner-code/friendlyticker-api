@@ -1,0 +1,13 @@
+# requirements.txt
+# Minimal, clean dependency set for the FriendlyTicker MVP.
+# Only what’s required for momentum signals, AI summaries, and a simple API.
+
+fastapi
+uvicorn
+httpx            # lightweight async requests for market data
+python-dotenv    # clean environment variable handling
+openai           # AI summaries
+pydantic         # data validation for simple, friendly responses
+
+requests
+
