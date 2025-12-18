@@ -273,13 +273,6 @@ def api_delete_alert(ticker: str, email: str) -> Dict[str, Any]:
     delete_rule(email=email_v, ticker=ticker_v)
     return {"ok": True}
 
-@app.get("/__debug_cors")
-def debug_cors():
-    return {
-        "cors": "THIS IS THE RUNNING CODE",
-        "origin": "friendlyticker-frontend.vercel.app"
-    }
-
 
 # ✅ Alerts endpoints (minimal)
 @app.post("/alerts/upsert")
