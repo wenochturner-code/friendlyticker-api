@@ -55,12 +55,10 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://friendlyticker-frontend.vercel.app"],
-    allow_credentials=False,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-) 
-
-
+)
 
 class AnalyzeRequest(BaseModel):
     ticker: str
