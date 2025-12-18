@@ -54,11 +54,12 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"https://friendlyticker-frontend(-.*)?\.vercel\.app",
+    allow_origins=["https://friendlyticker-frontend.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 
