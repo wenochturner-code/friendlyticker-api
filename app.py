@@ -60,6 +60,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/version")
+def version():
+    return {"version": "cors-regex-1"}
+
 class AnalyzeRequest(BaseModel):
     ticker: str
 
